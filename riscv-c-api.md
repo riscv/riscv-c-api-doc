@@ -114,7 +114,25 @@ For example:
 * `__attribute__((interrupt("supervisor")))`
 * `__attribute__((interrupt("machine")))`
 
-## Intrinsic Functions
+## Header Files for Intrinsic Function
 
-Do we really have none of these?  I can't figure out
-`gcc/gcc/config/riscv/riscv-builtins.c`...
+### riscv_intrinsic.h
+
+This file is universal intrinsic header file for all extensions, each extension
+could have their own header files, but should included in this file if
+corresponding extension is enabled.
+
+This header file also defined several common RISC-V specific type and related
+marco could be used in intrinsic interface or user program directly.
+
+| Type Name             | Meaning                              |
+| --------------------- | ------------------------------------ |
+| int_xlen_t            | Two's-complement signed integer type with exactly XLEN bits (no padding bits)   |
+| uint_xlen_t           | Unsigned integer type with exactly XLEN bits (no padding bits) |
+
+| Macro Name            | Value                                |
+| --------------------- | ------------------------------------ |
+| INT_XLEN_MAX          | Maximum value of int_xlen_t          |
+| INT_XLEN_MIN          | Minimum value of int_xlen_t          |
+| UINT_XLEN_MAX         | Maximum value of uint_xlen_t         |
+| UINT_XLEN_MIN         | Minimum value of uint_xlen_t         |
